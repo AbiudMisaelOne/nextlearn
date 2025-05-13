@@ -101,6 +101,9 @@ async function seedRevenue() {
   return insertedRevenue;
 }
 
+export const dynamic = 'force-dynamic';
+export const runtime = 'nodejs';
+
 export async function GET() {
   try {
     const result = await sql.begin((sql) => [
