@@ -105,6 +105,10 @@ export const dynamic = 'force-dynamic';
 export const runtime = 'nodejs';
 
 export async function GET() {
+  if (process.env.NODE_ENV === 'production') {
+    return Response.json({ message: 'Seed endpoint is not available in production' }, { status: 403 });
+  }
+
   try {
     const result = await sql.begin((sql) => [
       seedUsers(),
